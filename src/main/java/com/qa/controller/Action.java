@@ -1,8 +1,17 @@
+/**
+ * This package is used to take in a user inputs.
+ */
 package com.qa.controller;
 
 import org.apache.log4j.Logger;
 
 import com.qa.utils.Utils;
+
+/**
+ * Action is a collection of commands which are used to determine the type of
+ * function to apply to an entity.
+ *
+ */
 
 public enum Action {
 
@@ -14,6 +23,10 @@ public enum Action {
 
 	private String description;
 
+	/**
+	 * Describes the action
+	 */
+
 	Action(String description) {
 		this.description = description;
 	}
@@ -22,11 +35,22 @@ public enum Action {
 		return this.name() + ": " + this.description;
 	}
 
+	/**
+	 * Prints out all possible actions
+	 */
+
 	public static void printActions() {
 		for (Action action : Action.values()) {
 			LOGGER.info(action.description());
 		}
 	}
+
+	/**
+	 * Gets an action based on a users input. If user enters a non-specified
+	 * enumeration, it will ask for another input.
+	 * 
+	 * @return Action type
+	 */
 
 	public static Action getAction() {
 		Action action;
